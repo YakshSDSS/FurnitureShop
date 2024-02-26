@@ -55,6 +55,8 @@ namespace FurnitureShop
 
         private void calculateButton_Click(object sender, EventArgs e)
         {
+            
+
             try
             {
                 chairamount = Convert.ToDouble(chairsInput.Text);
@@ -67,18 +69,18 @@ namespace FurnitureShop
 
                 errorLabel1.Text = "";
                 error.Stop();
+                changeButton.Enabled = true;
             }
+
             catch
             {
                 error.Play();
                 errorLabel1.Text = "Error. Please Buy More.";
-                subtotalOutput.Text = "";
-                taxAmountOutput.Text = "";
-                totalOutput.Text = "";
+                
+             
             }
-
             subtotal = chairtotal + couchtotal + tabletotal;
-            tax = subtotal* taxrate;
+            tax = subtotal * taxrate;
             total = tax + subtotal;
 
 
@@ -86,7 +88,8 @@ namespace FurnitureShop
             taxAmountOutput.Text = tax.ToString("C");
             totalOutput.Text = total.ToString("C");
 
-            changeButton.Enabled = true;
+
+          
 
            
         }
@@ -203,6 +206,12 @@ namespace FurnitureShop
             newOrder.Enabled = false;
             errorLabel1.Text = "";
             errorLabel2.Text = "";
+            subtotal = 0;
+            tax = 0;
+            total = 0;
+            chairtotal = 0;
+            couchtotal = 0;
+            tabletotal = 0;
         }
     }
     }

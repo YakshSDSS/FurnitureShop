@@ -276,7 +276,7 @@
             this.receipt.ForeColor = System.Drawing.Color.Black;
             this.receipt.Location = new System.Drawing.Point(510, 9);
             this.receipt.Name = "receipt";
-            this.receipt.Size = new System.Drawing.Size(273, 288);
+            this.receipt.Size = new System.Drawing.Size(236, 288);
             this.receipt.TabIndex = 25;
             // 
             // errorLabel1
@@ -314,7 +314,7 @@
             this.newOrder.Enabled = false;
             this.newOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.newOrder.ForeColor = System.Drawing.Color.Yellow;
-            this.newOrder.Location = new System.Drawing.Point(549, 299);
+            this.newOrder.Location = new System.Drawing.Point(533, 299);
             this.newOrder.Name = "newOrder";
             this.newOrder.Size = new System.Drawing.Size(197, 33);
             this.newOrder.TabIndex = 29;
@@ -327,7 +327,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.OrangeRed;
-            this.ClientSize = new System.Drawing.Size(812, 337);
+            this.ClientSize = new System.Drawing.Size(757, 337);
             this.Controls.Add(this.newOrder);
             this.Controls.Add(this.changeOutput);
             this.Controls.Add(this.errorLabel2);

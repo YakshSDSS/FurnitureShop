@@ -123,7 +123,7 @@ namespace FurnitureShop
             { 
                 errorLabel2.Text = $"{tendered} is not enough";
                 error.Play();
-                receipt.Enabled=false;
+                receiptButton.Enabled=false;
             }
             else if (tendered > total)
             {

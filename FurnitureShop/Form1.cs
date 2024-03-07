@@ -14,105 +14,76 @@ namespace FurnitureShop
 {
     public partial class furnitureShop : Form
     {
-        double chairprice = 49.99;
-        double couchprice = 299.99;
-        double tableprice = 99.99;
+        double chairPrice = 49.99;
+        double couchPrice = 299.99;
+        double tablePrice = 99.99;
 
-        double chairamount;
-        double couchamount;
-        double tableamount;
+        double chairAmount;
+        double couchAmount;
+        double tableAmount;
 
         double tendered;
         double change;
 
-        double chairtotal;
-        double couchtotal;
-        double tabletotal;
+        double chairTotal;
+        double couchTotal;
+        double tableTotal;
 
         double subtotal;
         double taxrate = .13;
         double tax;
         double total;
 
-        SoundPlayer error = new SoundPlayer(Properties.Resources.Error_Sound);
-        SoundPlayer print = new SoundPlayer(Properties.Resources.Print_Sound);
+        SoundPlayer errorSound = new SoundPlayer(Properties.Resources.Error_Sound);
+        SoundPlayer printSound = new SoundPlayer(Properties.Resources.Print_Sound);
         public furnitureShop()
         {
             InitializeComponent();
         }
 
-        private void titleLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void couchesInput_TextChanged(object sender, EventArgs e)
-        {
-
-            
-
-        }
-
         private void calculateButton_Click(object sender, EventArgs e)
         {
-            
-
             try
             {
-                chairamount = Convert.ToDouble(chairsInput.Text);
-                couchamount = Convert.ToDouble(couchesInput.Text);
-                tableamount = Convert.ToDouble(tablesInput.Text);
+                chairAmount = Convert.ToDouble(chairsInput.Text);
+                couchAmount = Convert.ToDouble(couchesInput.Text);
+                tableAmount = Convert.ToDouble(tablesInput.Text);
 
-                chairtotal = chairamount * chairprice;
-                couchtotal = couchprice * couchamount;
-                tabletotal = tableprice * tableamount;
+                chairTotal = chairPrice * chairAmount;
+                couchTotal = couchPrice * couchAmount;
+                tableTotal = tablePrice * tableAmount;
 
                 errorLabel1.Text = "";
-                error.Stop();
+                errorSound.Stop();
                 changeButton.Enabled = true;
             }
-
             catch
             {
-                error.Play();
+                errorSound.Play();
                 errorLabel1.Text = "Error. Please Buy More.";
-                
-             
             }
-            subtotal = chairtotal + couchtotal + tabletotal;
+
+            subtotal = chairTotal + couchTotal + tableTotal;
             tax = subtotal * taxrate;
             total = tax + subtotal;
-
 
             subtotalOutput.Text = subtotal.ToString("C");
             taxAmountOutput.Text = tax.ToString("C");
             totalOutput.Text = total.ToString("C");
-
-
-          
-
-           
-        }
-
-        private void furnitureShop_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void changeButton_Click(object sender, EventArgs e)
         {
-       
-
             try
             {
                 tendered = Convert.ToDouble(tenderedInput.Text);
                 errorLabel2.Text = "";
-                error.Stop();
+                errorSound.Stop();
             }
             catch
             {
                 errorLabel2.Text = "Please enter a valid amount";
-                error.Play();
+                errorSound.Play();
                 receiptButton.Enabled = false;
             }
 
@@ -122,23 +93,20 @@ namespace FurnitureShop
             if (tendered < total)
             { 
                 errorLabel2.Text = $"{tendered} is not enough";
-                error.Play();
+                errorSound.Play();
                 receiptButton.Enabled=false;
             }
             else if (tendered > total)
             {
                 errorLabel2.Text = "";
-                error.Stop();
+                errorSound.Stop();
                 receiptButton.Enabled = true;
             }
-
-           
             }
 
         private void receiptButton_Click(object sender, EventArgs e)
         {
-            print.PlayLooping();
-
+            printSound.PlayLooping();
             receipt.Text = $"Furniture Shop";
 
             Thread.Sleep(500);
@@ -151,15 +119,15 @@ namespace FurnitureShop
 
             Thread.Sleep(500);
             Refresh();
-            receipt.Text += $"\n\nCouches x{couchamount}  @ {couchprice.ToString("C")}";
+            receipt.Text += $"\n\nCouches x{couchAmount}  @ {couchPrice.ToString("C")}";
             
             Thread.Sleep(500);
             Refresh();
-            receipt.Text += $"\nChairs x{chairamount}   @ {chairprice.ToString("C")}";
+            receipt.Text += $"\nChairs x{chairAmount}   @ {chairPrice.ToString("C")}";
 
             Thread.Sleep(500);
             Refresh();
-            receipt.Text += $"\nTables x{tableamount}   @ {tableprice.ToString("C")}";
+            receipt.Text += $"\nTables x{tableAmount}   @ {tablePrice.ToString("C")}";
 
             Thread.Sleep(500);
             Refresh();
@@ -185,8 +153,7 @@ namespace FurnitureShop
             Refresh();
             receipt.Text += $"\n\nHave A Great Day :)";
 
-            print.Stop();
-
+            printSound.Stop();
             newOrder.Enabled = true;
         }
 
@@ -195,23 +162,26 @@ namespace FurnitureShop
             couchesInput.Clear();
             chairsInput.Clear();
             tablesInput.Clear();
+            tenderedInput.Clear();
+
             subtotalOutput.Text = "";
             taxAmountOutput.Text = "";
             totalOutput.Text = "";
-            tenderedInput.Clear();
+            errorLabel1.Text = "";
+            errorLabel2.Text = "";
             changeOutput.Text = "";
             receipt.Text = "";
+
             changeButton.Enabled = false;
             receiptButton.Enabled = false;
             newOrder.Enabled = false;
-            errorLabel1.Text = "";
-            errorLabel2.Text = "";
+
             subtotal = 0;
             tax = 0;
             total = 0;
-            chairtotal = 0;
-            couchtotal = 0;
-            tabletotal = 0;
+            chairTotal = 0;
+            couchTotal = 0;
+            tableTotal = 0;
         }
     }
     }

@@ -67,7 +67,6 @@
             this.titleLabel.Size = new System.Drawing.Size(273, 39);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Funiture Shop 🪓";
-            this.titleLabel.Click += new System.EventHandler(this.titleLabel_Click);
             // 
             // couchesLabel
             // 
@@ -106,7 +105,7 @@
             this.couchesInput.Name = "couchesInput";
             this.couchesInput.Size = new System.Drawing.Size(55, 29);
             this.couchesInput.TabIndex = 4;
-            this.couchesInput.TextChanged += new System.EventHandler(this.couchesInput_TextChanged);
+           
             // 
             // chairsInput
             // 
@@ -360,7 +359,6 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "furnitureShop";
             this.Text = "Funiture Shop";
-            this.Load += new System.EventHandler(this.furnitureShop_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
